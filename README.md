@@ -1,1 +1,1 @@
-ServletDemo
+jdcb-sample
