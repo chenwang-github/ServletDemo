@@ -1,0 +1,44 @@
+﻿<div id = "cartContent">
+    <h1 style="font-size: 30px"> SHOPPING BAG </h1>
+    <div style="display: flex;padding-left:20px; padding-right:20px;">
+
+        <table class="two_column" >
+            <tr>
+                <td valign="top">
+                    <table class="cart_summary">
+                        <thead>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="padding: 10px;">
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody id="orderedProductsTblBody">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div class="two_column" style="text-align: left">
+
+
+            <h3>ORDER SUMMARY</h3><br>
+            <h5>SUBTOTAL  <span id = 'subtotal' style="float: right"> $0.00</span> </h5>
+            <h5>SHIPPING <span style="float: right">$0.00</span></h5>
+            <h5>ESTIMATED SALES TAX <span style="float: right">$0.00</span></h5>
+            <hr>
+            <h5> ORDER TOTAL <span id = 'order_total' style="float: right">$0.00</span></h5><br>
+            <button type="submit" id = "checkOutSubmit"class="tab_link" style=
+                    "background-color: black; color: white;float: right; width: 250px; height: 80px;
+                    text-align: center;"
+                    onclick="openButton('CheckOutPage');" disabled>CHECKOUT</button>
+        </div>
+    </div>
+
+
+</div>

@@ -19,6 +19,19 @@
             <input type="text" name="email"/>
             <input type="submit" value="Add"/>
         </form>
+        <form action="add.jsp" method="GET">
+            Enter First Number: <input type="text" name="num1"/>
+            Enter Second Number: <input type="text" name="num2"/>
+            <input type="submit" value="JSP_Add"/>
+        </form>
+        <script>
+            function loadProduct(img, name, price){
+
+            document.getElementById('ImgProduct').src = img;
+            document.getElementById('NameProduct').innerHTML = name;
+            document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
+            }
+        </script>
     </body>
     
 </html>

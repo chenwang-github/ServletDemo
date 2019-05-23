@@ -67,23 +67,35 @@ public class display_eyeproduct extends HttpServlet {
             PrintWriter out = response.getWriter();
             try {
                 // not a good practiceto include username and password in code
-                conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8889/TeaShopDB", "root", "root");              
+                conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8889/test", "root", "root");              
                 stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM products");
 
-                    out.println("<!doctype html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("    <meta charset=\"UTF-8\">");
-                    out.println("    <title>Products</title>");
-                    //out.println("    <link rel = \"stylesheet\" type = \"text.css\" href = \"style.css\">");
-                    out.println("</head>");
-                    out.println("<body>");
-                    while (rs.next()) {
-                        out.print("<p> name : "+ rs.getString("username") + " | email : "+ rs.getString("email")+"</p>");
-                    }
-                    out.println("</body>");
-                    out.println("</html>");
+                out.println("<!doctype html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("    <meta charset=\"UTF-8\">");
+                out.println("    <title>Products</title>");
+                out.println("    <link rel = \"stylesheet\" type = \"text.css\" href = \"style.css\">");
+                out.println("</head>");
+                out.println("<body>");
+//                    while (rs.next()) {
+//                        out.print("<p> name : "+ rs.getString("itemn") + "</p>");
+//                    }
+                while (rs.next()) {
+                    out.println("<div id = \"Eye\">");
+                    out.println("   <div class=\"columns\">");
+                    out.println("       <ul  class=\"products\">");
+                    
+                    out.println("           <img style = \"height: 50px\" class = \"resize\" src="+ rs.getString("itemi") +">");
+                    
+                    out.println("       </ul>");
+                    out.println("   </div>");
+                    out.println("</div>");
+                }    
+                
+                out.println("</body>");
+                out.println("</html>");
 
                 RequestDispatcher rd=request.getRequestDispatcher("/index.html");
                 rd.include(request, response);
@@ -112,7 +124,6 @@ public class display_eyeproduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
