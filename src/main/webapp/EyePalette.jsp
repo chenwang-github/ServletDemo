@@ -106,7 +106,7 @@
                         out.println("   <div class=\"columns\">");
                         out.println("       <ul  class=\"products\">");
                         out.println("           <li>");
-                        out.println("               <a href=\"productClicked.html?itemn="+name+"\">");
+                        out.println("               <a href=\"productClicked.jsp?itemn="+name+"\">");
                         out.println("                   <img class = \"resize\" src=" + rs.getString("itemi") +">");
                         out.println("               </a>");
                         out.println("           </li>");
@@ -122,6 +122,16 @@
                 out.println("Unable to connect to database"+ex);
             } 
         %>    
+        <%
+            if(session.getAttribute("itemn") == null){
+                out.println("<h1>Empty</h1>");
+            }else{
+                String itemn = (String)session.getAttribute("itemn");
+                out.println("<h1>"+itemn+"</h1>");
+            }
+            
+        %>
+        
 <!--            <div class="columns">
                 <ul  class="products">
                     <li>
