@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title> Venus Cosmetics </title>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
+        
+        <script>
+            var shoppingCart = [];
+            var totalPrice = 0;
+            var Item = function(images, name, price, count){
+                this.Images = images;
+                this.Name = name;
+                this.Price = price;
+                this.Count = count;
+            };
+
+            function addItem(images, name, price, amount){
+                for(var product in shoppingCart){
+                    if(shoppingCart[product].Name === name ){
+                        shoppingCart[product].Count.value++;
+                        updateShoppingBag();
+                        return;
+                    }
+                }
+                var img = document.createElement("img");
+                var input = document.createElement('input');
+                img.src = images;
+                input.type = "number"; input.min = '0';input.value = amount;
+                input.style.cssText = 'width:30%;padding:30px;height:5em;font-size:25px;font-weight:bold;';
+                input.addEventListener('click', updateShoppingBag);
+                var items = new Item(img, name, price, input);
+                shoppingCart.push(items);
+                updateShoppingBag();
+
+            }
+            function loadProduct(img, name, price){
+                document.getElementById('ImgProduct').src = img;
+                document.getElementById('NameProduct').innerHTML = name;
+                document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="top_nav" >
+            <a href="shoppingCart.html" onclick="verify_CheckOut()">My Cart</a>
+        </div>
+        <script>
+            window.onscroll = function() {myFunction();};
+
+            var top_nav = document.getElementById("top_nav");
+            var sticky = top_nav.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    top_nav.classList.add("sticky");
+                } else {
+                    top_nav.classList.remove("sticky");
+                }
+            }
+        </script>
+
+
+        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'homebutton.html';">Venus Cosmetics</button>
+        <button class="tab_link"  onclick="window.location.href = 'EyePalette.html';">Product</button>
+        <button class="tab_link"  onclick="window.location.href = 'about.html';">About Us</button>
+        <div id = "Eye">
+            <div class="columns">
+                <ul  class="products">
+                    <li>
+                        <a href="productClicked.html">
+                        <img class = "resize" src="eyepallette\eye1.jpg" 
+                            onclick="loadProduct('eyepallette\\eye1.jpg','THE VALENTINE PALETTE', 50.00, 1);">
+                        </a>
+                    </li>
+                    <li>THE VALENTINE PALETTE</li>
+                    <li class= "price">$50.00</li>
+                    <li><button class="cartbutton" onclick="addItem('eyepallette\\eye1.jpg','THE VALENTINE PALETTE', 50.00, 1)">
+                        ADD TO CART</button></li>
+
+                </ul>
+
+            </div>
+        </div>
+
+    </body>
+</html>

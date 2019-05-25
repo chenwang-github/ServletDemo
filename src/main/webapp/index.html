@@ -1,37 +1,213 @@
-<html>
+<!DOCTYPE html>
+<html lang = "en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <form action="connect" method="POST">
-            <input type="text" name="username"/>
-            <input type="text" name="email"/>
-            <input type="submit" value="TA_Add"/>
-        </form>
-        <form action="display_eyeproduct" method="GET">
-            <input type="submit" value="product_GET"/>
-        </form>
-        <form action="connect" method="GET">
-            <input type="submit" value="TA_GET"/>
-        </form>
-        <form action="add" method="POST">
-            <input type="text" name="username"/>
-            <input type="text" name="email"/>
-            <input type="submit" value="Add"/>
-        </form>
-        <form action="add.jsp" method="GET">
-            Enter First Number: <input type="text" name="num1"/>
-            Enter Second Number: <input type="text" name="num2"/>
-            <input type="submit" value="JSP_Add"/>
-        </form>
-        <script>
-            function loadProduct(img, name, price){
+        <title> Venus Cosmetics </title>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
 
-            document.getElementById('ImgProduct').src = img;
-            document.getElementById('NameProduct').innerHTML = name;
-            document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
+   
+        <script>
+            var shoppingCart = [];
+            var totalPrice = 0;
+            
+
+            function updateShoppingBag(){
+
+                var cart_total_price=0;
+                var orderedProductsTblBody=document.getElementById("orderedProductsTblBody");
+                while(orderedProductsTblBody.rows.length>0) {
+                    orderedProductsTblBody.deleteRow(0);
+                }
+                for(var product in shoppingCart){
+                    if (shoppingCart[product].Count.value <1) {
+                        shoppingCart.splice(shoppingCart.indexOf(shoppingCart[product]),1);
+                        document.getElementById('subtotal').innerHTML = '$'+String(cart_total_price.toFixed(2));
+                        document.getElementById('order_total').innerHTML = '$'+String(cart_total_price.toFixed(2));
+                        verify_CheckOut();
+                    }
+                    var row=orderedProductsTblBody.insertRow();
+                    var cellImage = row.insertCell(0);
+                    var cellName = row.insertCell(1);
+                    var cellAmount = row.insertCell(2);
+                    var cellPrice = row.insertCell(3);
+                    shoppingCart[product].Images.style = "height:250px;padding:30px;";
+                    //fill cells with values from current product object of our array
+                    cellName.innerHTML = shoppingCart[product].Name;
+                    cellImage.append( shoppingCart[product].Images);
+                    cellAmount.append(shoppingCart[product].Count);
+                    cellPrice.innerHTML = "$"+String((shoppingCart[product].Price * shoppingCart[product].Count.value).toFixed(2));
+                    cart_total_price+= (shoppingCart[product].Price*shoppingCart[product].Count.value);
+
+                }
+                //fill total cost of our shopping cart
+                totalPrice = cart_total_price;
+                document.getElementById('subtotal').innerHTML = '$'+String(totalPrice.toFixed(2));
+                document.getElementById('order_total').innerHTML = '$'+String(totalPrice.toFixed(2));
+
+            }
+            function finalShoppingBag(){
+                console.log(shoppingCart.length);
+                var cart_total_price=0;
+                var FinalSummary =document.getElementById("FinalSummary");
+                while(FinalSummary.rows.length>0) {
+                    FinalSummary.deleteRow(0);
+                }
+                for(var product in shoppingCart){
+                    var row= FinalSummary.insertRow();
+                    var cellImage = row.insertCell(0);
+                    var cellName = row.insertCell(1);
+                    var cellPrice = row.insertCell(2);
+                    shoppingCart[product].Images.style = "height:150px;";
+
+                    cellName.innerHTML = shoppingCart[product].Name;
+                    cellImage.append( shoppingCart[product].Images);
+                    cellPrice.innerHTML = "$"+String((shoppingCart[product].Price * shoppingCart[product].Count.value).toFixed(2));
+                    cart_total_price+= (shoppingCart[product].Price*shoppingCart[product].Count.value);
+
+                }
+                totalPrice = cart_total_price;
+                document.getElementById('final_subtotal').innerHTML = '$'+String(totalPrice.toFixed(2));
+                document.getElementById('final_order_total').innerHTML = '$'+String(totalPrice.toFixed(2));
+
+            }
+
+            function verify_CheckOut() {
+                if(shoppingCart.length >=1){
+                    document.getElementById('checkOutSubmit').disabled = false;
+                } else {
+                    document.getElementById('checkOutSubmit').disabled = true;
+                }
+            }
+
+        </script>
+        <script>
+            function checkCheckOut(){
+                var FirstName= document.SHIPPING.first_name;
+                var LastName = document.SHIPPING.last_name;
+                var Address = document.SHIPPING.address;
+                var City = document.SHIPPING.city;
+                var State = document.SHIPPING.state;
+                var Phone = document.SHIPPING.phone;
+                var CardName = document.SHIPPING.cardname;
+                var CardNumber = document.SHIPPING.cardnumber;
+                var CVV = document.SHIPPING.cvv;
+                var Month = document.SHIPPING.expmonth;
+                var Year = document.SHIPPING.expyear;
+                if (FirstName.value == "") {
+                    alert ("First name must be filled out");
+                    return false;
+                }
+                if( !isNaN(FirstName.value)){
+                    alert ("First name must be a string");
+                    return false;
+                }
+                if (LastName.value == "") {
+                    alert ("Last name must be filled out");
+                    return false;
+                }
+                if( !isNaN(LastName.value)){
+                    alert ("Last name must be a string");
+                    return false;
+                }
+                if (Address.value.length <6) {
+                    alert ("Address is too short try again");
+                    return false;
+                }
+                if (City.value == "") {
+                    alert ("City must be filled out");
+                    return false;
+                }
+                if (State.value == "") {
+                    alert ("State must be filled out");
+                    return false;
+                }
+
+                if( Phone.value.length < 12){
+                    alert ("Phone number is too short");
+                    return false;
+                }
+
+                if (CardName.value == "") {
+                    alert ("First name must be filled out");
+                    return false;
+                }
+                if( !isNaN(CardName.value)){
+                    alert ("Name must be a string");
+                    return false;
+                }
+                if( isNaN(CardNumber.value)){
+                    alert ("Card number must be all integers");
+                    return false;
+                }
+                if( CardNumber.value.length < 16){
+                    alert ("Credit card number is too short");
+                    return false;
+                }
+                if( isNaN(CVV.value)){
+                    alert ("CVV number must be all integers");
+                    return false;
+                }
+                if( CVV.value.length >3){
+                    alert ("CVV number is too long must only be 3 numbers");
+                    return false;
+                }
+                if (Month.value == "") {
+                    alert ("Month must be filled out");
+                    return false;
+                }
+                if( !isNaN(Month.value)){
+                    alert ("Month must be a string");
+                    return false;
+                }
+                if (Year.value == "") {
+                    alert ("Year must be filled out");
+                    return false;
+                }
+                if( isNaN(Year.value)){
+                    alert ("Year must be a number");
+                    return false;
+                }
+                if( Year.value.length >4){
+                    alert ("Year number is too long must only be 4 numbers");
+                    return false;
+                }
+
+                return true;
             }
         </script>
+        
+
+    </head>
+    <body>
+        <div id="top_nav" >
+            <a href="shoppingCart1.html" onclick="verify_CheckOut()">My Cart</a>
+        </div>
+        <script>
+            window.onscroll = function() {myFunction();};
+
+            var top_nav = document.getElementById("top_nav");
+            var sticky = top_nav.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    top_nav.classList.add("sticky");
+                } else {
+                    top_nav.classList.remove("sticky");
+                }
+            }
+        </script>
+
+
+        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'homebutton.html';">Venus Cosmetics</button>
+        <button class="tab_link"  onclick="window.location.href = 'EyePalette.jsp';">Product</button>
+        <button class="tab_link"  onclick="window.location.href = 'about.html';">About Us</button>
+
+        <div id = "Home"  >
+            <h1 style="background-color: white;font-weight: bold; font-size: 50px;
+            position: absolute; top: 50%; left: 50%; margin-right: -50%; padding: 20px;
+            transform: translate(-50%, -50%) ">WELCOME TO VENUS COSMETICS</h1>
+        </div>
     </body>
-    
 </html>

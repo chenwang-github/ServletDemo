@@ -1,5 +1,5 @@
 <div id = 'CheckOutPage'>
-    <h1 style="font-size: 90px"> CHECKOUT </h1>
+    <h1 style="font-size: 30px"> CHECKOUT </h1>
     <div id = "CheckOut" style="column-count: 3; column-gap: 50px">
         <form name = "SHIPPING"
               method='post' enctype='text/plain' >
@@ -7,15 +7,15 @@
                 <h2>1.SHIPPING</h2>
                 <div class="row">
                     <div class="col-50">
-                        <input type="text" id="first_name" name="first_name" placeholder="FIRST NAME">
+                        <input type="text" id="first_name" name="first_name" placeholder="FIRSTNAME">
                     </div>
                     <div class="col-50">
-                        <input type="text" id="last_name" name="last_name" placeholder="LAST NAME">
+                        <input type="text" id="last_name" name="last_name" placeholder="LASTNAME">
                     </div>
                 </div>
-                <input type="text" id="email" name="email" placeholder="EMAIL ADDRESS">
-                <input type="text" id="adr1" name="address" placeholder="ADDRESS">
-                <input type="text" id="city" name="city" placeholder="CITY">
+                <input type="text" id="email" name="email" placeholder="EMAIL ADDRESS" style="width:312px">
+                <input type="text" id="adr1" name="address" placeholder="ADDRESS" style="width:312px">
+                <input type="text" id="city" name="city" placeholder="CITY" style="width:312px">
 
                 <div class="row">
                     <div class="col-50">
@@ -25,12 +25,12 @@
                         <input type="text" id="zip" name="zip" placeholder="ZIP CODE">
                     </div>
                 </div>
-                <input type="text" id="phone" name="phone" placeholder="PHONE NUMBER" maxlength='12' size='12'>
+                <input type="text" id="phone" name="phone" placeholder="PHONE NUMBER" maxlength='12' size='12' style="width:312px">
 
                 <h3>SHIPPING METHOD</h3>
-                <input checked type="radio" name="method" value="3_DAY"> STANDARD 3 DAY<br>
-                <input type="radio" name="method" value="2_DAY"> 2 DAY SHIPPING<br>
-                <input type="radio" name="method" value="1_DAY"> 1 DAY SHIPPING<br>
+                <input checked type="radio" name="method" value="3_DAY"> STANDARD 3 DAY<br><br>
+                <input type="radio" name="method" value="2_DAY"> 2 DAY SHIPPING<br><br>
+                <input type="radio" name="method" value="1_DAY"> 1 DAY SHIPPING<br><br>
 
                 <label>
                     <br><br>
@@ -40,7 +40,7 @@
 
             <div class="three_column" style="text-align: left">
                 <h2>2.PAYMENT</h2>
-                <input type="text" id="cname" name="cardname" placeholder="NAME ON CARD">
+                <input type="text" id="cname" name="cardname" placeholder="NAME ON CARD" style="width:312px">
                 <div class="row">
                     <div class="col-50">
                         <input type="text" id="ccnum" name="cardnumber" placeholder="CARD NUMBER">
@@ -60,7 +60,7 @@
                 <br>
                 <br>
                 <input type="button" value="CONTINUE" class="tab_link" style=
-                        "background-color: black; color: white;float: right; width: 500px; height: 100px;
+                        "background-color: black; color: white;float: right; width: 300px; height: 80px;
                             text-align: center; " onclick="finalShoppingBag();">
             </div>
 
@@ -97,7 +97,7 @@
                 <h4> ORDER TOTAL <span id = 'final_order_total' style="float: right">$0.00</span></h4><br>
                 <br>
                 <br>
-                <input class="tab_link" style="background-color: black; color: white;float: right; width: 500px; height: 100px;
+                <input class="tab_link" style="background-color: black; color: white;float: right; width: 300px; height: 80px;
                        text-align: center;" type="submit" value="COMPLETE ORDER">
             </div>
         </form>

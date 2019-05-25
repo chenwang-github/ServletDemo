@@ -48,7 +48,7 @@ public class ConnectDBServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             try {
                 // not a good practiceto include username and password in code
-                conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8889/TeaShopDB", "root", "root");              
+                conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8889/", "root", "root");              
                 stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM users");
                 while (rs.next()) {

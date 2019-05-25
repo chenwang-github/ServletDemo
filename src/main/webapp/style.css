@@ -1,4 +1,4 @@
-﻿
+
 
 body {
     color: #000000;
@@ -121,8 +121,8 @@ body {
 }
 
 img.resize {
-    width:50px;
-    height:50px;
+    width:150px;
+    height:200px;
 }
 
 .dropdown {
@@ -156,11 +156,11 @@ img.resize {
 .columns {
     float: left;
     width: 250px;
-    padding-left: 80px;
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-left: 60px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     outline: none;
-    height:350px;
+    height:400px;
     text-align:center;
 }
 
@@ -169,6 +169,7 @@ img.resize {
     border: 1px solid #eee;
     margin: 0;
     padding: 0;
+    height:350px;
   
 }
 
@@ -185,7 +186,7 @@ img.resize {
 }
 
 .products li{
-    padding: 20px;
+    padding: 5px;
     font-size: 15px;
     font-weight: bold;
     text-align: center;
@@ -226,18 +227,19 @@ img.resize {
 }
 .row {
     display: flex;
-    flex: 50%;
+    flex-direction: row;
 }
 
 
 
 .col-50 {
-    flex: 20%;
+       float: left;
+       margin-right: 10px;
 }
 
 
 textboxes{
-	width: 85%;
+    width: 85%;
     margin-bottom: 20px;
     padding: 12px;
     border: 1px solid #ccc;
@@ -262,18 +264,15 @@ input[type = checkbox]{
 }
 
 clickedImage {
-    float: left;
     width: 50px;
     height:50px;
-    }
+}
 
 
 clickedDescription {
-    float: right;
-    width: 50%;
-    text-align: right;
     background-color: #ccffcc;
-    padding:20px;
+    
 
 }
+
 
