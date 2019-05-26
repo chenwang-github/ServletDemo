@@ -1,0 +1,28 @@
+<div id = "productClicked" style="font-size: 25px;padding-right: 1000px;padding-top: 40px">
+    <clickedDescription>
+        <h1 id="NameProduct">Name</h1>
+
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span>27 Reviews</span>
+        <p id = "PriceProduct">0.00 </p>
+        <input id="AmountProduct" type="number" value= 1 style="font-size: 80px">
+
+        <p>Description: Contains pressed powder eye shadow palette
+            (net weight / pods net 9 X 1.40 grams / 9 X 0.05 oz)</p>
+
+        <button class="cartbutton" onclick="addItem(
+            document.getElementById('ImgProduct').src, document.getElementById('NameProduct').innerText,
+            parseInt(document.getElementById('PriceProduct').innerText), parseInt(document.getElementById('AmountProduct').value))">
+            ADD TO CART</button>
+    </clickedDescription>
+    <clickedImage>
+        <img id="ImgProduct" src="eyepallette\eye1.jpg" width="600px" height="600px">
+    </clickedImage>
+
+
+
+</div>
