@@ -52,7 +52,16 @@
 
                 session.setAttribute("ShoppingCart", shoppingcart);
             }
-            shoppingcart.add(items);
+            boolean repeat = false;
+            for (Item product:shoppingcart){
+                if (product.images == items.images){
+                    product.quantity +=1;
+                    repeat = true;
+                }
+            }
+            if(repeat == false){
+                shoppingcart.add(items);
+            }
             RequestDispatcher rd = request.getRequestDispatcher("EyePalette.jsp");
             rd.include(request, response);
         %>    
