@@ -66,11 +66,7 @@ and open the template in the editor.
                 <p>Description: Contains pressed powder eye shadow palette
                     (net weight / pods net 9 X 1.40 grams / 9 X 0.05 oz)</p>
 
-                <button class="cartbutton" onclick="addItem(
-                    document.getElementById('ImgProduct').src, document.getElementById('NameProduct').innerText,
-                    parseInt(document.getElementById('PriceProduct').innerText), parseInt(document.getElementById('AmountProduct').value))">
-                    ADD TO CART
-                </button>
+                <button class="cartbutton" id = "AddProduct">ADD TO CART</button>
             </div>
         </div>
 <!--        <script>
@@ -111,6 +107,7 @@ and open the template in the editor.
             document.getElementById('NameProduct').innerHTML = "<%=itemn %>";
             document.getElementById('ImgProduct').src = "<%=itemi %>";
             document.getElementById('PriceProduct').innerHTML = "$"+"<%=itemp%>";
+            document.getElementById('AddProduct')
         </script>
     </body>
 </html>

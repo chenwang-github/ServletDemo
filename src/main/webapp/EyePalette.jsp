@@ -108,6 +108,7 @@
                         String img = rs.getString("itemi");
                         img = img.replace("\\", "-");
                         String price = String.valueOf(rs.getInt("itemp"));
+                        
                         out.println("   <div class=\"columns\">");
                         out.println("       <ul  class=\"products\">");
                         out.println("           <li>");                     
@@ -117,7 +118,7 @@
                         out.println("           </li>");
                         out.println("           <li>"+name+"</li>");
                         out.println("           <li class= \"price\">$"+price+"</li>");
-                        out.println("           <li><button class=\"cartbutton\" >ADD TO CART</button></li>");
+                        out.println("           <li><button class=\"cartbutton\" onclick=\"location.href='addToCart.jsp?itemn="+name+"&itemi="+img+"&itemp="+price+"'\" >ADD TO CART</button></li>");
                         out.println("       </ul>");
                         out.println("   </div>");
                     }
