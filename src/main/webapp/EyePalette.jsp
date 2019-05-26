@@ -4,6 +4,7 @@
     Author     : chenwang
 --%>
 <%@ page import=" java.io.IOException"%>
+<%@ page import="java.util.*"%>
 <%@ page import=" java.io.PrintWriter"%>
 <%@ page import=" java.sql.Connection"%>
 <%@ page import=" java.sql.Driver"%>
@@ -103,15 +104,18 @@
                     ResultSet rs = stmt.executeQuery("SELECT * FROM products");
                     while(rs.next()){  
                         String name = rs.getString("itemn");
+                        String img = rs.getString("itemi");
+                        img = img.replace("\\", "-");
+                        String price = String.valueOf(rs.getInt("itemp"));
                         out.println("   <div class=\"columns\">");
                         out.println("       <ul  class=\"products\">");
-                        out.println("           <li>");
-                        out.println("               <a href=\"productClicked.jsp?itemn="+name+"\">");
+                        out.println("           <li>");                     
+                        out.println("               <a href=\"productClicked.jsp?itemn="+name+"&itemi="+img+"&itemp="+price+"\">");
                         out.println("                   <img class = \"resize\" src=" + rs.getString("itemi") +">");
                         out.println("               </a>");
                         out.println("           </li>");
-                        out.println("           <li>THE VALElkdjf</li>");
-                        out.println("           <li class= \"price\">$50.00</li>");
+                        out.println("           <li>"+name+"</li>");
+                        out.println("           <li class= \"price\">$"+price+"</li>");
                         out.println("           <li><button class=\"cartbutton\" >ADD TO CART</button></li>");
                         out.println("       </ul>");
                         out.println("   </div>");
@@ -122,34 +126,22 @@
                 out.println("Unable to connect to database"+ex);
             } 
         %>    
-        <%
-            if(session.getAttribute("itemn") == null){
-                out.println("<h1>Empty</h1>");
-            }else{
-                String itemn = (String)session.getAttribute("itemn");
-                out.println("<h1>"+itemn+"</h1>");
-            }
-            
-        %>
-        
-<!--            <div class="columns">
-                <ul  class="products">
-                    <li>
-                        <a href="productClicked.html">
-                        <img class = "resize" src="eyepallette\eye1.jpg" 
-                            onclick="loadProduct('eyepallette\\eye1.jpg','THE VALENTINE PALETTE', 50.00, 1);">
-                        </a>
-                    </li>
-                    <li>THE VALENTINE PALETTE</li>
-                    <li class= "price">$50.00</li>
-                    <li><button class="cartbutton" onclick="addItem('eyepallette\\eye1.jpg','THE VALENTINE PALETTE', 50.00, 1)">
-                        ADD TO CART</button></li>
-
-                </ul>
-
-            </div>-->
         </div>
-
     </body>
+    <footer>
+        <%
+              out.println("<h1>   HISTORY ------------------------------------------------- </h1>");
+              if (session.getAttribute("history") == null){
+                  out.println("<h1> no view history yet </h1>");
+              }else{
+                  ArrayList<String> his = (ArrayList<String>)session.getAttribute("history");
+                  for(int i = his.size()-1;i>his.size()-6&& i>=0;i--){
+
+                      out.println("<img class = \"resize\" src=" + his.get(i).toString() +">");
+                  }
+              }
+ 
+        %>
+        </footer>
 </html>
 

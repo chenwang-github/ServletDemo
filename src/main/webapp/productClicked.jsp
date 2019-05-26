@@ -73,7 +73,7 @@ and open the template in the editor.
                 </button>
             </div>
         </div>
-        <script>
+<!--        <script>
            function getUrlVars() {
                var vars = {};
                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -84,33 +84,34 @@ and open the template in the editor.
         
            var itemn = getUrlVars()["itemn"];
            document.getElementById('NameProduct').innerHTML = itemn;
-           
-           <%
-               session.setAttribute("itemn", "name");
-//               if (session.getAttribute("history") == null){
-//                   ArrayList<ArrayList<String>> itemArray = new ArrayList<>();
-//               }
-//               else{
-//                   ArrayList<ArrayList<String>> itemArray = (ArrayList<ArrayList<String>>)session.getAttribute("history");
-//             
-//               }
-////               ArrayList<ArrayList<String>> itemArray = new ArrayList<>();
-//               ArrayList<String> item = new ArrayList<>();
-//               item.add("itemi");
-//               item.add("itemn");
-//               item.add("itemp");
-//               itemArray.add(new ArrayList<String>());
-//               //session.setAttribute("history",itemArray);
-           %>
-       
 
-//
-//
 //           document.getElementById('ImgProduct').src = img;
 //           document.getElementById('NameProduct').innerHTML = number;
 //           document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
-
-       </script>
+       </script>-->
+       <%
+            String path = request.getContextPath(); 
+            String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
+            String itemn = request.getParameter("itemn");
+            String itemi = request.getParameter("itemi");
+            String itemp = request.getParameter("itemp");
+            itemi = itemi.replace("-","/");
+            //session.setAttribute("itemn", itemn);
+            ArrayList<String> his = new ArrayList();
+            if (session.getAttribute("history") == null){
+                session.setAttribute("history", his);
+                his = (ArrayList<String>)session.getAttribute("history");
+            }else{
+                his = (ArrayList<String>)session.getAttribute("history");
+            }
+            his.add(itemi);
+            session.setAttribute("history",his);
+        %>
+        <script>
+            document.getElementById('NameProduct').innerHTML = "<%=itemn %>";
+            document.getElementById('ImgProduct').src = "<%=itemi %>";
+            document.getElementById('PriceProduct').innerHTML = "$"+"<%=itemp%>";
+        </script>
     </body>
 </html>
 
