@@ -29,47 +29,7 @@
         <link rel = "stylesheet" type = "text/css" href = "style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
-        
-        <script type="text/javascript">
-            var shoppingCart = [];
-            var totalPrice = 0;
-            var Item = function(images, name, price, count){
-                this.Images = images;
-                this.Name = name;
-                this.Price = price;
-                this.Count = count;
-            };
-
-            function addItem(images, name, price, amount){
-                for(var product in shoppingCart){
-                    if(shoppingCart[product].Name === name ){
-                        shoppingCart[product].Count.value++;
-                        updateShoppingBag();
-                        return;
-                    }
-                }
-                var img = document.createElement("img");
-                var input = document.createElement('input');
-                img.src = images;
-                input.type = "number"; input.min = '0';input.value = amount;
-                input.style.cssText = 'width:30%;padding:30px;height:5em;font-size:25px;font-weight:bold;';
-                input.addEventListener('click', updateShoppingBag);
-                var items = new Item(img, name, price, input);
-                shoppingCart.push(items);
-                updateShoppingBag();
-
-            }
-            function loadProduct(img, name, price){
-                document.getElementById('ImgProduct').src = img;
-                document.getElementById('NameProduct').innerHTML = name;
-                document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
-            }
-            
-           
-            
-          
-
-            
+     
         </script>
     </head>
     <body>
@@ -114,7 +74,7 @@
                         image = image.replace("\\", "-");
                         String name = rs.getString("itemn");
                         String price = rs.getString("itemp");
-                        String links = "/newjsp.jsp?"+
+                        String links = "newjsp.jsp?"+
                             "itemi="+image+
                             "&itemn="+name+
                             "&quantity="+ 1+

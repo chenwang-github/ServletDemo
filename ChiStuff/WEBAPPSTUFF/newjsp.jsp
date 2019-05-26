@@ -52,12 +52,9 @@
 
                 session.setAttribute("ShoppingCart", shoppingcart);
             }
-
             shoppingcart.add(items);
-            response.sendRedirect(response.encodeRedirectURL(
-            "/shoppingCart.jsp"));
-            
-                
+            RequestDispatcher rd = request.getRequestDispatcher("EyePalette.jsp");
+            rd.include(request, response);
         %>    
     </body>
 </html>
