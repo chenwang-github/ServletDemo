@@ -104,6 +104,7 @@
                     stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * FROM products");
                     while(rs.next()){  
+                        
                         String name = rs.getString("itemn");
                         String img = rs.getString("itemi");
                         img = img.replace("\\", "-");
@@ -118,7 +119,7 @@
                         out.println("           </li>");
                         out.println("           <li>"+name+"</li>");
                         out.println("           <li class= \"price\">$"+price+"</li>");
-                        out.println("           <li><button class=\"cartbutton\" onclick=\"location.href='addToCart.jsp?itemn="+name+"&itemi="+img+"&itemp="+price+"'\" >ADD TO CART</button></li>");
+                        out.println("           <li><button class=\"cartbutton\" onclick=\"location.href='addItem.jsp?itemn="+name+"&itemi="+img+"&quantity="+ 1+"&itemp="+price+"'\" >ADD TO CART</button></li>");
                         out.println("       </ul>");
                         out.println("   </div>");
                     }

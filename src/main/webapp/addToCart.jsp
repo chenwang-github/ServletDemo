@@ -13,7 +13,7 @@
     </head>
     <body>
         <script>alert("successfuly add to cart")</script>
-
+        
 
     </body>
 </html>
