@@ -41,9 +41,9 @@ and open the template in the editor.
         </script>
 
 
-        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'homebutton.html';">Venus Cosmetics</button>
+        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'index.html';">Venus Cosmetics</button>
         <button class="tab_link"  onclick="window.location.href = 'EyePalette.jsp';">Product</button>
-        <button class="tab_link"  onclick="window.location.href = 'about.html';">About Us</button>
+        <button class="tab_link"  onclick="window.location.href = 'about.jsp';">About Us</button>
         
         
         <div id = "productClicked" style="margin: auto;width: 60%; padding: 10px;">
@@ -97,15 +97,15 @@ and open the template in the editor.
             String itemp = request.getParameter("itemp");
             itemi = itemi.replace("-","/");
             //session.setAttribute("itemn", itemn);
-            ArrayList<String> his = new ArrayList();
-            if (session.getAttribute("history") == null){
+            ArrayList<String> his = (ArrayList<String>)session.getAttribute("history");
+            if (his == null){
+                his = new ArrayList();
                 session.setAttribute("history", his);
-                his = (ArrayList<String>)session.getAttribute("history");
-            }else{
-                his = (ArrayList<String>)session.getAttribute("history");
             }
+ 
             his.add(itemi);
             session.setAttribute("history",his);
+
         %>
         <script>
             document.getElementById('NameProduct').innerHTML = "<%=itemn %>";

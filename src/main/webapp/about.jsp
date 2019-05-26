@@ -1,3 +1,10 @@
+<%-- 
+    Document   : about
+    Created on : May 25, 2019, 5:24:07 PM
+    Author     : chenwang
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -32,9 +39,9 @@ and open the template in the editor.
         </script>
 
 
-        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'homebutton.html';">Venus Cosmetics</button>
-        <button class="tab_link"  onclick="window.location.href = 'EyePallette.jsp';">Product</button>
-        <button class="tab_link"  onclick="window.location.href = 'about.html';">About Us</button>
+        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'index.html';">Venus Cosmetics</button>
+        <button class="tab_link"  onclick="window.location.href = 'EyePalette.jsp';">Product</button>
+        <button class="tab_link"  onclick="window.location.href = 'about.jsp';">About Us</button>
 
         <div id="AboutUs" style="font-size: 1.0vw; padding: 100px; text-align: center;">
             <br>
@@ -56,3 +63,4 @@ and open the template in the editor.
         </div>
     </body>
 </html>
+

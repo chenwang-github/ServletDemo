@@ -64,6 +64,7 @@
                 document.getElementById('NameProduct').innerHTML = name;
                 document.getElementById('PriceProduct').innerHTML = price.toFixed(2);
             }
+            
         </script>
     </head>
     <body>
@@ -86,9 +87,9 @@
         </script>
 
 
-        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'homebutton.html';">Venus Cosmetics</button>
-        <button class="tab_link"  onclick="window.location.href = 'EyePalette.html';">Product</button>
-        <button class="tab_link"  onclick="window.location.href = 'about.html';">About Us</button>
+        <button id="defaultOpen" class="logo_link"  onclick="window.location.href = 'index.html';">Venus Cosmetics</button>
+        <button class="tab_link"  onclick="window.location.href = 'EyePalette.jsp';">Product</button>
+        <button class="tab_link"  onclick="window.location.href = 'about.jsp';">About Us</button>
         <div id = "Eye">
             <%
             try {
