@@ -66,8 +66,9 @@
         %>    
         
         <%
-            String redirectURL = "http://localhost:8080/jdcb-sample/result.jsp";
-            response.sendRedirect(redirectURL);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("EyePalette.jsp");
+            rd.include(request, response);
         %>
     </body>
 </html>

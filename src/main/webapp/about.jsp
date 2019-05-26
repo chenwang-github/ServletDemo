@@ -21,7 +21,7 @@ and open the template in the editor.
     </head>
     <body>
         <div id="top_nav" >
-            <a href="shoppingCart.html" onclick="verify_CheckOut()">My Cart</a>
+            <a href="shoppingCart.jsp" onclick="verify_CheckOut()">My Cart</a>
         </div>
         <script>
             window.onscroll = function() {myFunction();};

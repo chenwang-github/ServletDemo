@@ -215,7 +215,10 @@ img.resize {
 }
 
 .two_column {
-    flex: 50%;
+    float: left;
+    width: 50%;
+    /*border: solid orange;*/
+    position: relative;
 }
 
 
