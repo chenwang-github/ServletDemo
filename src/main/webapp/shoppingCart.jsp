@@ -77,6 +77,7 @@
                  
                 }
             }
+            
             out.println("</div>");
                 out.println("<div class=\"two_column\" style=\"text-align: left; width:50%; float:right;\">"+
                     "<h3> ORDER SUMMARY </h3><br>"+
@@ -92,5 +93,6 @@
                 "</div>");
             %>
          </div>
+         
     </body>
 </html>
